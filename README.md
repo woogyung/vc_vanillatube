@@ -20,7 +20,9 @@
 - 우선 repository를 본인 Github 계정으로 fork해주세요. (바닐라코딩 google-clone repository 페이지 오른쪽 상단에 보시면 fork 버튼이 있습니다.)
 
 ```
-// 본인이 원하는 디렉토리로 이동
+// ** 본인이 원하는 디렉토리내에서 실행할 것. **
+
+// fork해온 프로젝트를 본인 컴퓨터에 다운받는 명령어
 git clone git@github.com:당신의유저네임/google-clone.git
 
 // 방금 clone한 디렉토리로 이동
