@@ -1,9 +1,11 @@
 {
-  "name": "google-clone",
+  "name": "ponyo-ajax",
   "version": "1.0.0",
-  "description": "Creating a static google clone website",
+  "description": "AJAX",
   "main": "bundle.js",
-  "dependencies": {},
+  "dependencies": {
+    "jquery": "^3.2.1"
+  },
   "devDependencies": {
     "css-loader": "^0.28.4",
     "file-loader": "^0.11.2",
@@ -20,12 +22,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/vanilla-coding/google-clone.git"
+    "url": "git+https://github.com/vanilla-coding/ponyo-ajax.git"
   },
   "author": "Ken Huh <ken@vanillacoding.co>",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/vanilla-coding/google-clone/issues"
+    "url": "https://github.com/vanilla-coding/ponyo-ajax/issues"
   },
-  "homepage": "https://github.com/vanilla-coding/google-clone#readme"
+  "homepage": "https://github.com/vanilla-coding/ponyo-ajax#readme"
 }
