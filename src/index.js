@@ -26,8 +26,10 @@ var breeds = [
 ];
 
 /*
+ *
  * 웹페이지에 각각의 종을 보여주도록 수정하는 부분입니다.
  * 다른 형식으로 바꾸셔도 좋습니다.
+ *
  */
 var breedListEl = document.getElementById('breed-list');
 
@@ -41,14 +43,19 @@ breeds.forEach(function (breed) {
 
 
 /*
+ *
+ * 1. 이벤트 등록하기
+ *
  * 사용자가 하나의 강아지종을 click했을때
  * 선택한 종을 event 객체에서 찾아서 fetchPhotoURL을 실행시키세요.
+ *
  */
 
 
 
+
 /*
- * AJAX 요청 핸들링
+ * 2. AJAX 요청
  *
  * 성공적으로 response를 받으면, 받은 데이터에서 사진 url을 찾아서 UI에 해당 사진을 보여주세요.
  * 기존에 선택했던 사진이 있다면, 교체해야 합니다.
