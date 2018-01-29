@@ -1,7 +1,7 @@
 {
-  "name": "ponyo-ajax",
+  "name": "hacker-news",
   "version": "1.0.0",
-  "description": "AJAX",
+  "description": "AJAX Training",
   "main": "bundle.js",
   "dependencies": {
     "jquery": "^3.2.1"
@@ -24,12 +24,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/vanilla-coding/ponyo-ajax.git"
+    "url": "git+https://github.com/vanilla-coding/hacker-news.git"
   },
   "author": "Ken Huh <ken@vanillacoding.co>",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/vanilla-coding/ponyo-ajax/issues"
+    "url": "https://github.com/vanilla-coding/hacker-news/issues"
   },
-  "homepage": "https://github.com/vanilla-coding/ponyo-ajax#readme"
+  "homepage": "https://github.com/vanilla-coding/hacker-news#readme"
 }

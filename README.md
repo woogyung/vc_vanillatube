@@ -1,10 +1,11 @@
-# Creating a webpage with dog photos
+# Hacker News
 
-### Goal
+## Goal
 
-- `src/index.js`의 `breed` 배열에 주어진 모든 강아지종들을 사용자가 선택할 수 있도록 UI에 보여주세요.
-- 사용자가 UI에서 하나의 종을 선택할때마다 AJAX 요청을 이용하여 강아지 사진 데이터를 받아와 UI에 보여주세요. (기존 사진 교체)
-- `GET https://dog.ceo/api/breed/강아지종/images/random`
+- [Hacker News](https://news.ycombinator.com/)와 (거의) 똑같은 UI 화면을 만드는 것이 이번 과제입니다.
+- [Hacker News stories API 문서](https://github.com/HackerNews/API#new-top-and-best-stories)를 참고하여 `topstories`, `newstories`, 혹은 `beststories`중 하나의 리스트를 보여주도록 UI를 만들어주세요.
+- 위 API로 GET 요청을 보내면 그에 대한 응답으로 아이템 id값들이 담긴 배열이 돌아옵니다. 각각의 아이템 id를 이용해 [Hacker News items API 문서](https://github.com/HackerNews/API#items)를 참고하여 각각의 아이템 상세 정보를 가져와야 합니다. 각각의 아이템 상세정보에 담긴 `title`과 `url` 정보를 이용하여 글 목록을 만들어 주세요.
+- 타이틀과 URL 이외의 추가적인 기능/정보들은 시간이 되시면 작업해주세요.
 
 ---
 
@@ -27,7 +28,7 @@
 
 ### Installation
 
-- 우선 repository를 본인 Github 계정으로 fork해주세요. (바닐라코딩 ponyo-ajax repository 페이지 오른쪽 상단에 보시면 fork 버튼이 있습니다.)
+- 우선 repository를 본인 Github 계정으로 fork해주세요. (바닐라코딩 repository 페이지 오른쪽 상단에 보시면 fork 버튼이 있습니다.)
 
 ```
 // ** 본인이 원하는 디렉토리내에서 실행할 것. **
@@ -36,7 +37,7 @@
 git clone REMOTE_URL
 
 // 방금 clone한 디렉토리로 이동
-cd ponyo-ajax
+cd hacker-news
 
 // 작업에 필요한 구성 요소 설치
 npm install
@@ -74,7 +75,7 @@ git push origin master
 
 작업 내용 저장 후, 다음 링크의 방법을 따라하세요.[PR 만들기](https://help.github.com/articles/creating-a-pull-request-from-a-fork/)
 
-**영어 잘 이해 안되시면 사슴나라 슬랙 채널에 물어보세요!**
+**영어 잘 이해 안되시면 슬랙 채널에 물어보세요!**
 
 ---
 
