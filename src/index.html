@@ -10,6 +10,36 @@
             js/css는 웹팩이라는 도구가 자동으로 꽂아주니 따로 넣지 마세요.
 
         -->
-        <h1>Hacker News</h1>
+
+        <h1>VanillaTube</h1>
+
+        <div class="navigation-bar">
+            <div class="search-bar">
+                <label>유튜부 검색</label>
+                <input class="video-search-input" type="text" />
+                <button class="youtube-search-button">검색</button>
+                <br />
+                <label>현재 페이지내 검색</label>
+                <input class="video-filter-text" type="text" />
+                <button class="page-search-button">검색</button>
+            </div>
+        </div>
+
+        <div class="main-container">
+            <div class="selected-video">
+                <div class="video-player">
+                    <iframe src="" allowFullScreen></iframe>
+                </div>
+
+                <div class="video-details">
+                    <h2></h2>
+                    <p></p>
+                </div>
+            </div>
+
+            <div class="video-list-container">
+                <ul class="video-list"></ul>
+            </div>
+        </div>
     </body>
 </html>

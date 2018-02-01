@@ -8,8 +8,63 @@
  *
 */
 
-@myGrey: #dddddd;
+@import './fonts.less';
+
+@vanillaColor: #FFFFFF;
 
 body {
-  background-color: @myGrey;
+  font-family: 'SpoqaHanSans', 'san-serif';
+  background-color: @vanillaColor;
+}
+
+h1 {
+  font-size: 45px;
+}
+
+.main-container {
+  padding-top: 50px;
+}
+
+.selected-video {
+  display: inline-block;
+  float: left;
+  max-width: 50%;
+
+  iframe {
+    width: 100%;
+    height: 400px;
+  }
+
+  p {
+    max-width: 800px;
+  }
+}
+
+.video-list-container {
+  display: inline-block;
+  float: right;
+  max-width: 50%;
+}
+
+.video-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.video-item {
+  max-width: 800px;
+  border: 1px solid black;
+  margin: 50px 0;
+  padding: 20px;
+  border-radius: 5px;
+
+  &:first-of-type {
+    margin-top: 0;
+  }
+
+  &:hover {
+    background-color: #FFEBEE;
+    cursor: pointer;
+  }
 }

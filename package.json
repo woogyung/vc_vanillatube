@@ -1,11 +1,8 @@
 {
-  "name": "hacker-news",
+  "name": "VanillaTube",
   "version": "1.0.0",
-  "description": "AJAX Training",
+  "description": "Vanilla Javascript Training",
   "main": "bundle.js",
-  "dependencies": {
-    "jquery": "^3.2.1"
-  },
   "devDependencies": {
     "css-loader": "^0.28.4",
     "file-loader": "^0.11.2",
@@ -24,12 +21,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/vanilla-coding/hacker-news.git"
+    "url": "git+https://github.com/vanilla-coding/vanillatube.git"
   },
   "author": "Ken Huh <ken@vanillacoding.co>",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/vanilla-coding/hacker-news/issues"
+    "url": "https://github.com/vanilla-coding/vanillatube/issues"
   },
-  "homepage": "https://github.com/vanilla-coding/hacker-news#readme"
+  "homepage": "https://github.com/vanilla-coding/vanillatube#readme",
+  "dependencies": {
+    "jquery": "^3.3.1"
+  }
 }

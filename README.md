@@ -1,28 +1,10 @@
-# Hacker News
+# VanillaTube
 
-## Goal
+## TODO
 
-- [Hacker News](https://news.ycombinator.com/)와 (거의) 똑같은 UI 화면을 만드는 것이 이번 과제입니다.
-- [Hacker News stories API 문서](https://github.com/HackerNews/API#new-top-and-best-stories)를 참고하여 `topstories`, `newstories`, 혹은 `beststories`중 하나의 리스트를 보여주도록 UI를 만들어주세요.
-- 위 API로 GET 요청을 보내면 그에 대한 응답으로 아이템 id값들이 담긴 배열이 돌아옵니다. 각각의 아이템 id를 이용해 [Hacker News items API 문서](https://github.com/HackerNews/API#items)를 참고하여 각각의 아이템 상세 정보를 가져와야 합니다. 각각의 아이템 상세정보에 담긴 `title`과 `url` 정보를 이용하여 글 목록을 만들어 주세요.
-- 타이틀과 URL 이외의 추가적인 기능/정보들은 시간이 되시면 작업해주세요.
+1. 페이지내 검색 기능 완성하기
 
----
-
-### 도움말
-
-- [이벤트 걸기](https://developer.mozilla.org/ko/docs/Web/API/EventTarget/addEventListener)
-- [이벤트 종류](https://developer.mozilla.org/ko/docs/Web/Reference/Events)
-- [Element 만들기](https://developer.mozilla.org/ko/docs/Web/API/Document/createElement)
-- [여러개의 Element 찾기](https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelectorAll)
-- [하나의 Element 찾기](https://developer.mozilla.org/ko/docs/Web/API/Document/querySelector)
-- [Element HTML 수정](https://developer.mozilla.org/ko/docs/Web/API/Element/innerHTML)
-- [Element 텍스트 변경](https://developer.mozilla.org/ko/docs/Web/API/Node/textContent)
-- [Element 뒤로 추가](https://developer.mozilla.org/ko/docs/Web/API/Node/appendChild)
-- [Element 앞에 추가](https://developer.mozilla.org/ko/docs/Web/API/Node/insertBefore)
-- [Document API](https://developer.mozilla.org/ko/docs/Web/API/Document)
-- [Element API](https://developer.mozilla.org/ko/docs/Web/API/Element)
-- [Node API](https://developer.mozilla.org/ko/docs/Web/API/Node)
+- 현재 페이지에 보시면 페이지내 검색창이 있습니다. 텍스트를 입력후, 검색 버튼을 눌렀을때 현재 가지고 있는 비디오 데이터에서 타이틀을 기준으로 해당 검색 텍스트를 가지고 있는 비디오만 리스트에 보이도록 완성해주세요.
 
 ---
 
@@ -37,7 +19,7 @@
 git clone REMOTE_URL
 
 // 방금 clone한 디렉토리로 이동
-cd hacker-news
+cd vanillatube
 
 // 작업에 필요한 구성 요소 설치
 npm install

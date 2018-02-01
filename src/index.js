@@ -1,23 +1,61 @@
 /*
- * Hacker News
+ * Vanillatube
  * - Vanilla Coding
  */
 
 /*
- * $ 변수를 이용하여 jQuery를 사용합니다.
- * jQuery는 ajax 요청이외의 목적으로는 사용하지 마세요.
- * 절대 지우지 마세요!
+ * import ~ from 이 무엇일까요?
+ * 궁금하시다면 -> https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Statements/import
  */
-import $ from 'jquery';
+import { items as VIDEO_DATA } from './config/sampleData.json';
 
-/*
+// const의 특징에 대해 기억하시나요?
+// 기억 안나신다면 -> https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Statements/const
+const videoListEl = document.querySelector('.video-list');
+const selectedVideoEl = document.querySelector('.selected-video');
+const selectedVideoIframeEl = selectedVideoEl.querySelector('iframe');
+const selectedVideoTitleEl = selectedVideoEl.querySelector('h2');
+const selectedVideoDescriptionEl = selectedVideoEl.querySelector('p');
 
-  < GET Request 예시 >
+selectedVideoIframeEl.src = `https://www.youtube.com/embed/${VIDEO_DATA[0].id.videoId}?autoplay=1`;
+selectedVideoTitleEl.textContent = VIDEO_DATA[0].snippet.title;
+selectedVideoDescriptionEl.textContent = VIDEO_DATA[0].snippet.description;
 
-  참고 문서: https://api.jquery.com/jquery.get
+VIDEO_DATA.forEach(function (videoData, i, videoList) {
+  const videoItemEl = document.createElement('li');
+  const videoThumbnailEl = document.createElement('img');
+  const videoTitleEl = document.createElement('h2');
+  const videoDescriptionEl = document.createElement('p');
 
-  $.get('URL', function (data) {
-    console.log(data);
-  });
+  videoDescriptionEl.textContent = videoData.snippet.description;
+  videoTitleEl.textContent = videoData.snippet.title;
+  videoThumbnailEl.src = videoData.snippet.thumbnails.medium.url;
+  videoItemEl.classList.add('video-item');
+  videoItemEl.dataset.videoId = videoData.id.videoId;
 
-*/
+  videoItemEl.appendChild(videoThumbnailEl);
+  videoItemEl.appendChild(videoTitleEl);
+  videoItemEl.appendChild(videoDescriptionEl);
+
+  videoListEl.appendChild(videoItemEl);
+});
+
+videoListEl.addEventListener('click', function onVideoListClick (e) {
+  let targetVideoEl;
+
+  if (e.target === e.currentTarget) {
+    return;
+  }
+
+  if (e.target.parentElement.classList.contains('video-item')) {
+    targetVideoEl = e.target.parentElement;
+  } else {
+    targetVideoEl = e.target;
+  }
+
+  selectedVideoIframeEl.src = `https://www.youtube.com/embed/${targetVideoEl.dataset.videoId}?autoplay=1`;
+  selectedVideoTitleEl.textContent = targetVideoEl.querySelector('h2').textContent;
+  selectedVideoDescriptionEl.textContent = targetVideoEl.querySelector('p').textContent;
+
+  window.scrollTo(0,0);
+});
