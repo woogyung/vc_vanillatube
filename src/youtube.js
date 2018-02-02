@@ -2,7 +2,7 @@ import $ from 'jquery';
 
 // Youtube API Key를 생성하셔서 넣어주세요!
 // https://developers.google.com/youtube/v3/
-const YOUTUBE_API_KEY = 'YOUTUBE_API_KEY';
+const YOUTUBE_API_KEY = 'AIzaSyCNZbRIlLt_aJZvPfTGjNibNKE7KXMMSN8';
 
 export const getYouTubeData = function (searchText, cb) {
   $.get({

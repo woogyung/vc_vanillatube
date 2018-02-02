@@ -59,3 +59,12 @@ videoListEl.addEventListener('click', function onVideoListClick (e) {
 
   window.scrollTo(0,0);
 });
+
+// Object Oriented Programming TODO
+
+// 1. What kind of logics can we abstact out? Observe.
+
+// 2. Write a simple module around the logic. Keep in mind, "Do not optimize prematurely."
+// Related link: https://softwareengineering.stackexchange.com/questions/80084/is-premature-optimization-really-the-root-of-all-evil
+
+// 3. Optimize as needed.
