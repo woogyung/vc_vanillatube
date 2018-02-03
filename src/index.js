@@ -63,6 +63,7 @@ videoListEl.addEventListener('click', function onVideoListClick (e) {
 // Object Oriented Programming TODO
 
 // 1. What kind of logics can we abstact out? Observe.
+// (DO NOT look for duplicate lines of code, but try to find common logic)
 
 // 2. Write a simple module around the logic. Keep in mind, "Do not optimize prematurely."
 // Related link: https://softwareengineering.stackexchange.com/questions/80084/is-premature-optimization-really-the-root-of-all-evil
