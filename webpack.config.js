@@ -8,8 +8,8 @@ const HtmlWebpackPluginConfig = new HtmlWebpackPlugin({
 
 const config = {
   entry: [
-    './src/index.js',
-    './src/style.less'
+    './src/js/index.js',
+    './src/styles/index.less'
   ],
   output: {
     path: path.resolve('dist'),
