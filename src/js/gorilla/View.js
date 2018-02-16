@@ -1,44 +1,47 @@
-let uniqId = 0;
+import domify from 'domify';
+import _ from 'lodash';
 
-const View = function View (options) {
-  uniqId++;
+var elements = [];
+var elementId = 0;
 
-  if (!options.el || !options.el instanceof Element) {
-    throw new Error('Please include `el` option to initialize gorilla view.');
-  }
+function View ({ template, model, parent }) {
+  this.template = _.template(template);
+  this.context = model;
+  this.parent = parent;
+  this.elementId = null;
+}
 
-  this.id = uniqId;
-  this.el = options.el;
-
-  // preinit, initialize, set up model, and etc
+View.prototype.updateContext = function (context) {
+  _.assign(this.context, context);
 };
 
-View.prototype.initialize = function () {
-
-};
-
-View.prototype.beforeRender = function () {
-
+View.prototype.registerEvent = function (eventName, cb) {
+  const el = elements[this.elementId];
+  el.addEventListener(eventName, cb);
 };
 
 View.prototype.render = function () {
+  if (this.elementId === null) {
+    this.elementId = elementId;
+    elementId++;
+  } else {
+    this.parent.removeChild(elements[this.elementId]);
+  }
 
-};
+  elements[this.elementId] = domify(this.template(this.context));
 
-View.prototype.afterRender = function () {
+  this.parent.appendChild(elements[this.elementId]);
 
-};
-
-View.prototype.beforeDestroy = function () {
-
+  return elements[this.elementId];
 };
 
 View.prototype.destroy = function () {
+  if (!elements[this.elementId]) {
+    throw new Error('[View 오류] 지우고자 하는 엘레먼트가 존재하지 않습니다.');
+  }
 
-};
-
-View.prototype.afterDestroy = function () {
-
+  this.parent.removeChild(elements[this.elementId]);
+  elements[this.elementId] = null;
 };
 
 export default View;

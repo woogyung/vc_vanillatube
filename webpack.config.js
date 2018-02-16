@@ -28,6 +28,10 @@ const config = {
           'css-loader',
           'less-loader'
         ]
+      },
+      {
+        test: /\.html$/,
+        loader: "html-loader"
       }
     ]
   },
