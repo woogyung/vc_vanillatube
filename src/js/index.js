@@ -2,93 +2,65 @@
  * Vanillatube
  * - Vanilla Coding
  */
-
-/*
- * import ~ from 이 무엇일까요?
- * 궁금하시다면 -> https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Statements/import
- */
 import { items as VIDEO_DATA } from '../config/sampleData.json';
+import AppUI from './components/App';
+import SelectedVideoItemUI from './components/SelectedVideoItem';
+import VideoListUI from './components/VideoList';
 
-// const의 특징에 대해 기억하시나요?
-// 기억 안나신다면 -> https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Statements/const
-const videoListEl = document.querySelector('.video-list');
-
-const videoListItemManager = {
-  createElement: function ({ id, title, url, description }) {
-    const videoItemEl = document.createElement('li');
-    const videoThumbnailEl = document.createElement('img');
-    const videoTitleEl = document.createElement('h2');
-    const videoDescriptionEl = document.createElement('p');
-
-    videoDescriptionEl.textContent = description;
-    videoTitleEl.textContent = title;
-    videoThumbnailEl.src = url;
-    videoItemEl.classList.add('video-item');
-    videoItemEl.dataset.videoId = id;
-
-    videoItemEl.appendChild(videoThumbnailEl);
-    videoItemEl.appendChild(videoTitleEl);
-    videoItemEl.appendChild(videoDescriptionEl);
-
-    return videoItemEl;
-  },
-  getData: function (videoListItemEl) {
-    return {
-      id: videoListItemEl.dataset.videoId,
-      title: videoListItemEl.querySelector('h2').textContent,
-      description: videoListItemEl.querySelector('p').textContent
-    };
+// App Component
+const appUI = AppUI.create({
+  element: document.getElementById('root'),
+  model: {
+    title: '바닐라튜브',
+    user: '켄'
   }
-};
-
-const selectedVideoEl = document.querySelector('.selected-video');
-
-const selectedVideoItemManager = {
-  iframeEl: selectedVideoEl.querySelector('iframe'),
-  videoTitleEl: selectedVideoEl.querySelector('h2'),
-  videoDescriptionEl: selectedVideoEl.querySelector('p'),
-  set: function ({ id, title, description }) {
-    this.iframeEl.src = `https://www.youtube.com/embed/${id}?autoplay=1`;
-    this.videoTitleEl.textContent = title;
-    this.videoDescriptionEl.textContent = description;
-  }
-};
-
-selectedVideoItemManager.set({
-  id: VIDEO_DATA[0].id.videoId,
-  title: VIDEO_DATA[0].snippet.title,
-  description: VIDEO_DATA[0].snippet.description
 });
 
-VIDEO_DATA.forEach(function (videoData, i, videoList) {
-  const videoItemEl = videoListItemManager.createElement({
-    id: videoData.id.videoId,
-    title: videoData.snippet.title,
-    description: videoData.snippet.description,
-    url: videoData.snippet.thumbnails.medium.url
-  });
+appUI.render();
 
-  videoListEl.appendChild(videoItemEl);
+// Adding an event demo #1
+appUI.events({
+  click: {
+    selector: '.page-search-button',
+    handler: function (ev) {
+      console.log('click - 1: ', ev.target);
+    }
+  }
 });
 
-videoListEl.addEventListener('click', function onVideoListClick (e) {
-  let targetVideoEl;
+// Selected Video Component
+let selectedVideoData = VIDEO_DATA[0];
 
-  if (e.target === e.currentTarget) {
-    return;
+const selectedVideoItemUI = SelectedVideoItemUI.create({
+  element: document.querySelector('.selected-video'),
+  model: {
+    description: selectedVideoData.snippet.description,
+    title: selectedVideoData.snippet.title,
+    src: `https://www.youtube.com/embed/${selectedVideoData.id.videoId}`
   }
-
-  if (e.target.parentElement.classList.contains('video-item')) {
-    targetVideoEl = e.target.parentElement;
-  } else {
-    targetVideoEl = e.target;
-  }
-
-  const { id, title, description } = videoListItemManager.getData(targetVideoEl);
-
-  selectedVideoItemManager.set({ id, title, description });
-
-  window.scrollTo(0,0);
 });
 
-// MVC TODO
+SelectedVideoItemUI.render();
+
+// Video List Component
+const videoListUI = VideoListUI.create({
+  element: document.querySelector('.video-list-container'),
+  model: {
+    videos: _.map(VIDEO_DATA, function (data) {
+      return {
+        src: data.snippet.thumbnails.medium.url,
+        title: data.snippet.title,
+        description: data.snippet.description
+      };
+    })
+  }
+});
+
+videoListUI.render();
+
+// Adding an event demo #2
+videoListUI.events({
+  click: function (ev) {
+    console.log('click - 1: ', ev.target);
+  }
+});
