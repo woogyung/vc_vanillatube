@@ -6,6 +6,8 @@ import { items as VIDEO_DATA } from '../config/sampleData.json';
 
 import Model from './gorilla/Model';
 
+import Router from './gorilla/Router';
+
 import AppUI from './components/App';
 import SelectedVideoItemUI from './components/SelectedVideoItem';
 import VideoListUI from './components/VideoList';
@@ -35,6 +37,20 @@ const videoListModel = new Model({
       return video.id.videoId === videoId;
     });
   }
+});
+
+// Router
+const router = new Router({
+  item: {
+    path: function ({ param }) {
+      return `/items/${param}`;
+    }
+  }
+});
+
+// Param value gets passed into the path function
+router.set('item', {
+  param: VIDEO_DATA[0].id.videoId
 });
 
 // App Component
