@@ -65,9 +65,12 @@ searchBarUI.events({
     selector: '.page-search-button',
     handler: function (ev) {
       const inputValue = searchBarUI.getPageSearchInputValue();
+      const filteredModel = videoListModel.filter(function (data) {
+        return data.snippet.title.indexOf(inputValue) > -1;
+      });
 
       videoListUI.model = {
-        videos: videoListModel.data
+        videos: filteredModel.map(videoListModel.createVideoItemModel)
       };
 
       videoListUI.render();
