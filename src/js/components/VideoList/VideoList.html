@@ -1,7 +1,9 @@
 <ul class="video-list">
-  <% _.forEach(videos, function (video) { %><li class="video-item">
+  <% _.forEach(videos, function (video) { %>
+    <li class="video-item" data-id="<%= video.id %>">
       <img src="<%= video.src %>">
       <h2><%= video.title %></h2>
       <p><%= video.description %></p>
-    </li><% }); %>
+    </li>
+  <% }); %>
 </ul>

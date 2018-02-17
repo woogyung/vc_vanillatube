@@ -1,3 +1,4 @@
+import _ from 'lodash';
 import View from './View';
 
 function validator (data, title) {
@@ -15,17 +16,27 @@ function Component (template) {
         return this;
       }
 
-      if (!options.parent || !options.model) {
-        throw new Error('[컴포넌트 생성 오류] `parent`와 `model`이 필요합니다.');
+      if (!options.element || !options.model) {
+        throw new Error('[컴포넌트 생성 오류] `element`와 `model`이 필요합니다.');
       }
 
       view = new View({
         template,
         model: options.model,
-        parent: options.parent
+        element: options.element
       });
 
+      _.extend(this, _.omit(options, [ 'element', 'model' ]));
+
       return this;
+    },
+    find: function (selector) {
+      validator(view, '해당 view');
+      return view.find(selector);
+    },
+    findAll: function (selector) {
+      validator(view, '해당 view');
+      return view.findAll(selector);
     },
     render: function () {
       validator(view, '해당 view');
@@ -37,7 +48,11 @@ function Component (template) {
     },
     events: function (events) {
       for (var ev in events) {
-        view.registerEvent(ev, events[ev]);
+        if (typeof events[ev] === 'function') {
+          view.registerEvent(ev, events[ev]);
+        } else {
+          view.registerEvent(ev, events[ev].handler, events[ev].selector);
+        }
       }
     }
   };
