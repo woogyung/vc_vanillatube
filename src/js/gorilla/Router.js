@@ -38,6 +38,7 @@ Router.prototype.set = function (routeName, data) {
     name: routeName
   }, routeName, '/#' + this.routeMap[routeName].path(data));
 
+  // 3. Calls the subscribers
   this.routeMap[routeName].handlers.forEach(function (cb) {
     cb(data);
   });

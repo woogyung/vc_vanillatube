@@ -49,8 +49,15 @@ const router = new Router({
 });
 
 // Param value gets passed into the path function
+const defaultVideoId = window.location.hash.split('items/')[1] || VIDEO_DATA[0].id.videoId;
+
 router.set('item', {
-  param: VIDEO_DATA[0].id.videoId
+  param: defaultVideoId
+});
+
+// 1. Show Interest for a topic and subscribe
+router.on('item', function ({ param }) {
+  showSelectedVideo(param);
 });
 
 // App Component
@@ -95,9 +102,11 @@ searchBarUI.events({
 });
 
 // Selected Video Component
+const defaultVideoData = videoListModel.find({ id: { videoId: defaultVideoId } });
+
 const selectedVideoItemUI = SelectedVideoItemUI.create({
   element: document.querySelector('.selected-video'),
-  model: videoListModel.createSelectedVideoItemModel(VIDEO_DATA[0])
+  model: videoListModel.createSelectedVideoItemModel(defaultVideoData)
 });
 
 selectedVideoItemUI.render();
@@ -125,15 +134,22 @@ videoListUI.events({
       return;
     }
 
-    var selectedVideoId = targetVideoEl.dataset.id;
-    var selectedVideoData = videoListModel.findByVideoId(selectedVideoId);
-
-    selectedVideoItemUI.model = videoListModel.createSelectedVideoItemModel(selectedVideoData);
-
-    selectedVideoItemUI.render();
+    // 2. New Action - Publish
+    router.set('item', {
+      param: targetVideoEl.dataset.id
+    });
 
     setTimeout(function () {
       window.scrollTo(0, 0);
     }, 500);
   }
 });
+
+function showSelectedVideo (videoId) {
+  var selectedVideoId = videoId;
+  var selectedVideoData = videoListModel.findByVideoId(selectedVideoId);
+
+  selectedVideoItemUI.model = videoListModel.createSelectedVideoItemModel(selectedVideoData);
+
+  selectedVideoItemUI.render();
+}
