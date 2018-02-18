@@ -34,9 +34,17 @@ Router.prototype.set = function (routeName, data) {
     throw new Error('[Router.prototype.set] 변경하시려는 경로의 파라미터값이 필요합니다.');
   }
 
+  let hashValue;
+
+  if (typeof this.routeMap[routeName].path === 'function') {
+    hashValue = this.routeMap[routeName].path(data);
+  } else {
+    hashValue = this.routeMap[routeName].path;
+  }
+
   window.history.pushState({
     name: routeName
-  }, routeName, '/#' + this.routeMap[routeName].path(data));
+  }, routeName, `/#${hashValue}`);
 
   // 3. Calls the subscribers
   this.routeMap[routeName].handlers.forEach(function (cb) {

@@ -15,6 +15,10 @@ import SearchBarUI from './components/SearchBar';
 
 import { findClosestParentWithClass } from './utils/domUtils';
 
+// `getYouTubeData`라는 변수에 유투브 데이터를 가져올 수 있는 함수가 담겨 있습니다.
+// `utils/youtube` 파일에 가셔서 본인의 유튜브 API KEY를 넣어주세요.
+import { getYouTubeData } from './utils/youtube';
+
 const videoListModel = new Model({
   data: VIDEO_DATA,
   createSelectedVideoItemModel: function (raw) {

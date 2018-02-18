@@ -2,7 +2,13 @@
 
 ## TODO
 
-- 없음! 코드 이해를 잘 하고 넘어가세요!
+### Youtube 검색창 기능 만들기
+
+- 유튜부 검색창에 검색어를 넣고 검색 버튼을 누르면, 유튜부 API를 호출하여 가져온 데이터를 이용해 비디오 목록을 업데이트해줍니다.
+
+- 과제를 시작하시기 전에 다음 링크에 가셔서 유튜부 API를 생성하세요. *[YOUTUBE API KEY 만들기](https://developers.google.com/youtube/v3/getting-started)*
+
+- 그리고 `src/js/utils/youtube.js` 파일에 가셔서 본인의 YOUTUBE API KEY를 넣어주세요.
 
 ---
 
